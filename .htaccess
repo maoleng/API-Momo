@@ -1,0 +1,87 @@
+Options +FollowSymLinks 
+ServerSignature Off
+RewriteEngine On 				 
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#Lỗi không tồn tại
+ErrorDocument 404 /view/error/error.html
+ErrorDocument 402 /view/error/error.html
+ErrorDocument 403 /view/error/error.html
+ErrorDocument 404 /view/error/error.html
+ErrorDocument 500 /view/error/error.html
+Options All -Indexes
+
+#bank
+RewriteRule ^api/bank/add$ /controller/bank/account.php?act=addAccount [L]
+RewriteRule ^api/bank/account/list$ /controller/bank/account.php?act=listAccount [L]
+RewriteRule ^api/bank/account/delete$ /controller/bank/account.php?act=deleteAccount [L]
+RewriteRule ^api/bank/account/delete$ /controller/bank/account.php?act=deleteAccount [L]
+RewriteRule ^api/bank/account/edit$ /controller/bank/account.php?act=editAccount [L]
+
+#momo
+RewriteRule ^api/momo/sendotp$ /controller/momo/otp.php?act=send [L]
+RewriteRule ^api/momo/confirm$ /controller/momo/otp.php?act=confirm [L]
+RewriteRule ^api/momo/checkname$ /controller/momo/send.php?act=checkName [L]
+RewriteRule ^api/momo/send$ /controller/momo/send.php?act=send [L]
+RewriteRule ^api/momo/send/histories$ /controller/momo/send.php?act=sendhistories [L]
+RewriteRule ^api/momo/account/list$ /controller/momo/account_list.php [L]
+RewriteRule ^api/momo/settings$ /controller/momo/settings.php?act=settings [L]
+RewriteRule ^api/momo/delete$ /controller/momo/settings.php?act=delete [L]
+RewriteRule ^api/momo/histories$ /controller/momo/histories.php [L]
+RewriteRule ^api/momo/topup$ /controller/momo/topup.php?act=topup [L]
+RewriteRule ^api/momo/topup/histories$ /controller/momo/topup.php?act=topuphistories [L]
+RewriteRule ^api/momo/reload$ /controller/momo/api.php?act=getToken [L]
+RewriteRule ^api/momo/send_bank/list$ /controller/momo/send_bank.php?act=listBank [L]
+RewriteRule ^api/momo/send_bank/checkname$ /controller/momo/send_bank.php?act=checkName [L]
+RewriteRule ^api/momo/send_bank/send$ /controller/momo/send_bank.php?act=send [L]
+RewriteRule ^api/momo/send_bank/histories$ /controller/momo/send_bank.php?act=sendhistories [L]
+#tích hợp
+RewriteRule ^api/view/log/(.*)/(.*)$ /assets/vendor/log/$1/$2.bat [L]
+
+
+RewriteRule ^api/momo/v1/histories$ /controller/momo/api.php?act=getHistories [L]
+RewriteRule ^api/momo/v1/histories/full$ /controller/momo/api.php?act=getHistoriesFull [L]
+RewriteRule ^api/momo/v1/send$ /controller/momo/api.php?act=sendMoney [L]
+RewriteRule ^api/momo/v1/saythanks$ /controller/momo/api.php?act=sayThanks [L]
+RewriteRule ^api/momo/v1/sendbank$ /controller/momo/api.php?act=sendMoneyBank [L]
+RewriteRule ^api/momo/v1/checkbankname$ /controller/momo/api.php?act=checkName [L]
+RewriteRule ^api/momo/v1/listbank$ /controller/momo/api.php?act=listBank [L]
+
+#bank 
+RewriteRule ^api/bank/mbbank/v1/histories$ /controller/bank/mbbank/api.php?act=apiHistories [L]
+RewriteRule ^api/bank/vietcombank/v1/histories$ /controller/bank/vietcombank/api.php?act=apiHistories [L]
+RewriteRule ^api/bank/acbbank/v1/histories$ /controller/bank/acb/api.php?act=apiHistories [L]
+
+
+#view bank 
+RewriteRule ^api/bank/mbbank/histories$ /controller/bank/mbbank/api.php?act=getHistories [L]
+RewriteRule ^api/bank/vietcombank/histories$ /controller/bank/vietcombank/api.php?act=getHistories [L]
+RewriteRule ^api/bank/acbbank/histories$ /controller/bank/acb/api.php?act=getHistories [L]
+
+#actions
+RewriteRule ^api/actions/reset/([0-9a-zA-Z\-\_]+)$ /controller/momo/api.php?act=$1 [L]
+
+#user
+RewriteRule ^api/users/login$ /controller/users/login.php [L]
+RewriteRule ^api/users/logout$ /controller/users/logout.php [L]
+RewriteRule ^api/users/changepass$ /controller/users/changepass.php [L]
+
+#view
+RewriteRule ^$ /view/users/login.php [L]
+RewriteRule ^users/logout$ /view/users/logout.php [L]
+RewriteRule ^users/changepass$ /view/users/changepass.php [L]
+RewriteRule ^settings/game/([0-9a-z\-\_]+)$ /view/settings/game.php?id=$1 [L]
+RewriteRule ^settings/momo_account/([0-9a-z\-\_]+)$ /view/settings/momo_account.php?id=$1 [L]
+RewriteRule ^settings/bank_account/([0-9a-z\-\_]+)$ /view/settings/bank_account.php?id=$1 [L]
+RewriteRule ^quanly$ /view/quanly/momo/index.php [L]
+RewriteRule ^quanly/momo$ /view/quanly/momo/index.php [L]
+RewriteRule ^quanly/momo/momo_account$ /view/quanly/momo/momo_account.php [L]
+RewriteRule ^quanly/momo/send$ /view/quanly/momo/send.php [L]
+RewriteRule ^quanly/momo/histories$ /view/quanly/momo/history.php [L]
+RewriteRule ^quanly/momo/topup$ /view/quanly/momo/topup.php [L]
+RewriteRule ^quanly/momo/send_bank$ /view/quanly/momo/send_bank.php [L]
+RewriteRule ^quanly/bank/mbbank/histories$ /view/quanly/bank/mbbank/history.php [L]
+RewriteRule ^quanly/bank/vietcombank/histories$ /view/quanly/bank/vietcombank/history.php [L]
+RewriteRule ^quanly/bank/acb/histories$ /view/quanly/bank/acbbank/history.php [L]
+RewriteRule ^quanly/bank/accounts$ /view/quanly/bank/account.php [L]
