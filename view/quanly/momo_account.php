@@ -102,7 +102,7 @@
 	              <label class="col-form-label col-lg-3">Mật Khẩu: <span class="text-danger">*</span>
 	              </label>
 	              <div class="col-lg-9">
-	                <input type="text" name="password" id="password" class="form-control is-valid" />
+	                <input type="password" name="password" id="password" class="form-control is-valid" />
 	                <div class="valid-feedback">Vui lòng nhập mật khẩu MoMo.</div>
 	              </div>
 	            </div>

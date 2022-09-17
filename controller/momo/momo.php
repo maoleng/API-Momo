@@ -109,7 +109,7 @@ class MOMO
     );
     private $momo_data_config = array(
         "appVer" => 31062,
-        "appCode" => "3.1.6"
+        "appCode" => "4.0.3"
         
         );
 
